@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050b14">
+
+<title>Develop With Aman | Premium Game Development Solutions</title>
+<meta name="description" content="Professional game development services — color prediction scripts, casino & iGaming platforms, admin panels, Android APK, hosting & domain. 24-hour delivery by Aman.">
+<meta name="keywords" content="color prediction game, casino script, game development, admin panel, APK, iGaming, Develop With Aman">
+<meta name="author" content="Develop With Aman">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Develop With Aman | Premium Game Solutions">
+<meta property="og:description" content="Enterprise-grade game scripts, admin panels, APK, hosting & domain — delivered in 24 hours.">
+<meta property="og:url" content="https://tyson-portfolio-v2.github.io/BIO/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+:root{
+  --bg:#050b14;
+  --bg-2:#0a1523;
+  --surface:rgba(13,25,40,.72);
+  --surface-2:rgba(9,18,30,.85);
+  --line:rgba(0,230,160,.18);
+  --line-strong:rgba(0,230,160,.42);
+  --accent:#00e6a0;
+  --accent-2:#38bdf8;
+  --accent-3:#fbbf24;
+  --text:#e9eefb;
+  --muted:#93a6c2;
+  --muted-2:#6d819c;
+  --radius:20px;
+  --radius-sm:14px;
+  --shadow:0 22px 45px -22px rgba(0,0,0,.9);
+  --glow:0 0 0 1px rgba(0,230,160,.35), 0 18px 40px -18px rgba(0,230,160,.45);
+  --ease:cubic-bezier(.22,.9,.32,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:96px;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* Ambient background */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(900px 620px at 12% -5%, rgba(0,230,160,.14), transparent 62%),
+    radial-gradient(760px 520px at 92% 8%, rgba(56,189,248,.12), transparent 60%),
+    radial-gradient(900px 700px at 50% 110%, rgba(0,230,160,.07), transparent 65%),
+    #050b14;
+}
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 85%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 85%);
+}
+
+::selection{background:rgba(0,230,160,.3);color:#fff}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#070e18}
+::-webkit-scrollbar-thumb{background:#16344a;border-radius:20px;border:2px solid #070e18}
+::-webkit-scrollbar-thumb:hover{background:#1d4a68}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+============================================================ */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+}
+.section-title{
+  font-size:clamp(1.6rem,3.4vw,2.4rem);
+  font-weight:800; letter-spacing:-.02em; line-height:1.2;
+}
+.section-sub{color:var(--muted);font-size:.95rem;max-width:620px;margin-inline:auto}
+.text-muted-2{color:var(--muted)!important}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+.glass-nav{
+  background:rgba(5,12,20,.72);
+  backdrop-filter:blur(22px) saturate(160%);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:background .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  z-index:1030;
+}
+.glass-nav.scrolled{
+  background:rgba(5,12,20,.92);
+  border-bottom-color:var(--line);
+  box-shadow:0 14px 40px -24px #000;
+}
+.brand-minimal{
+  font-size:1.02rem; font-weight:800; letter-spacing:-.02em;
+  display:inline-flex; align-items:center; gap:.55rem;
+  color:#fff; text-decoration:none;
+}
+.brand-minimal .brand-mark{
+  width:34px;height:34px;border-radius:10px;
+  display:grid;place-items:center;
+  background:linear-gradient(140deg, rgba(0,230,160,.22), rgba(56,189,248,.16));
+  border:1px solid var(--line-strong);
+  color:var(--accent); font-size:.9rem;
+  box-shadow:0 0 18px -6px rgba(0,230,160,.7);
+}
+.brand-minimal .brand-text{
+  background:linear-gradient(120deg,#ffffff,#a9ffdc 55%,#00e6a0);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.brand-minimal small{
+  display:block; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted-2); font-weight:600; line-height:1;
+}
+
+.nav-link-custom{
+  color:#c3d2e6; font-weight:500; font-size:.88rem;
+  padding:.4rem .1rem; text-decoration:none; position:relative;
+  transition:color .2s var(--ease);
+}
+.nav-link-custom::after{
+  content:""; position:absolute; left:0; bottom:-2px;
+  width:0; height:2px; border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition:width .3s var(--ease);
+}
+.nav-link-custom:hover,.nav-link-custom.active{color:var(--accent)}
+.nav-link-custom:hover::after,.nav-link-custom.active::after{width:100%}
+
+.btn-call{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-size:.8rem; font-weight:600; padding:.5rem 1.05rem;
+  border-radius:50px; text-decoration:none;
+  color:#bff5e2; border:1px solid var(--line-strong);
+  background:rgba(0,230,160,.07);
+  transition:all .25s var(--ease);
+}
+.btn-call:hover{background:rgba(0,230,160,.16);color:#fff;border-color:var(--accent);transform:translateY(-1px)}
+
+.btn-menu{
+  width:40px;height:40px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(0,230,160,.1); border:1px solid var(--line-strong);
+  color:var(--accent); font-size:1rem; transition:all .25s var(--ease);
+}
+.btn-menu:hover{background:var(--accent);color:#04121b}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero-main{padding:clamp(3rem,7vw,5.5rem) 0 clamp(2rem,5vw,3.5rem);text-align:center;position:relative}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,230,160,.1);
+  border:1px solid var(--line-strong);
+  color:#c6ffe9; font-weight:600; font-size:.75rem;
+  letter-spacing:.08em; text-transform:uppercase;
+  padding:.5rem 1.15rem; border-radius:50px;
+  box-shadow:0 0 26px -10px rgba(0,230,160,.8);
+}
+.main-brand{
+  font-size:clamp(2.3rem,7.2vw,4.6rem);
+  font-weight:900; letter-spacing:-.035em; line-height:1.02;
+  margin-top:1.4rem;
+  background:linear-gradient(120deg,#ffffff 8%,#9dffd9 45%,#00e6a0 78%,#38bdf8 105%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 0 34px rgba(0,230,160,.28));
+}
+.sub-brand{
+  display:inline-block; margin-top:1.1rem; padding-top:.85rem;
+  font-size:clamp(.85rem,1.9vw,1.05rem); font-weight:500; color:#b9d6e8;
+  border-top:1px solid var(--line-strong);
+}
+.hero-desc{color:var(--muted);max-width:660px;margin:1.1rem auto 0;font-size:.95rem}
+
+.hero-stats{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:2rem;
+}
+.stat-pill{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--surface); border:1px solid rgba(255,255,255,.07);
+  border-radius:50px; padding:.55rem 1.15rem;
+  font-size:.78rem; font-weight:600; color:#c6d7ea;
+  backdrop-filter:blur(12px);
+  transition:all .3s var(--ease);
+}
+.stat-pill:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.stat-pill i{color:var(--accent)}
+
+/* ============================================================
+   CARDS / SURFACES
+============================================================ */
+.surface{
+  background:var(--surface);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+}
+
+/* ============================================================
+   FILTER SIDEBAR
+============================================================ */
+.filter-sidebar{
+  background:var(--surface);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  padding:1.6rem;
+  position:sticky; top:100px;
+}
+.filter-sidebar .side-title{
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted-2);margin-bottom:1rem;
+}
+.filter-btn{
+  display:flex;align-items:center;gap:.7rem;
+  width:100%; text-align:left; cursor:pointer;
+  background:rgba(255,255,255,.035);
+  border:1px solid transparent;
+  color:#cfdcec; font-weight:600; font-size:.85rem;
+  padding:.8rem 1rem; border-radius:var(--radius-sm);
+  margin-bottom:.55rem;
+  transition:all .25s var(--ease);
+}
+.filter-btn i{width:18px;text-align:center;opacity:.85}
+.filter-btn:hover:not(.active){background:rgba(0,230,160,.09);border-color:var(--line);transform:translateX(4px)}
+.filter-btn.active{
+  background:linear-gradient(100deg,rgba(0,230,160,.22),rgba(56,189,248,.14));
+  border-color:var(--line-strong);
+  color:#eafff8;
+  box-shadow:0 0 26px -12px rgba(0,230,160,.9);
+}
+.filter-btn.active i{opacity:1;color:var(--accent)}
+.filter-count{
+  margin-left:auto;font-size:.68rem;font-weight:700;
+  background:rgba(255,255,255,.09);color:#a9bcd4;
+  padding:.1rem .5rem;border-radius:50px;min-width:24px;text-align:center;
+}
+.filter-btn.active .filter-count{background:rgba(0,0,0,.35);color:var(--accent)}
+
+.side-cta{
+  background:linear-gradient(140deg,rgba(0,230,160,.09),rgba(56,189,248,.05));
+  border:1px dashed var(--line-strong);
+  border-radius:var(--radius-sm);
+  padding:1.1rem; text-align:center;
+}
+
+/* ============================================================
+   DEMO GRID
+============================================================ */
+.demo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:1.4rem;
+}
+@media(max-width:1200px){.demo-grid{grid-template-columns:1fr}}
+
+.game-card{
+  background:var(--surface);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  overflow:hidden; position:relative;
+  transition:transform .4s var(--ease), border-color .3s var(--ease), box-shadow .4s var(--ease);
+  animation:cardIn .5s var(--ease) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.game-card::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(420px 220px at 50% -10%, rgba(0,230,160,.1), transparent 70%);
+  opacity:0; transition:opacity .4s var(--ease);
+}
+.game-card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:var(--glow)}
+.game-card:hover::before{opacity:1}
+
+.card-header-plain{
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:1rem 1.3rem;
+  background:linear-gradient(100deg,rgba(0,230,160,.09),rgba(56,189,248,.04));
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.card-header-plain h5{font-size:.92rem;font-weight:700;margin:0;letter-spacing:-.01em}
+.badge-category{
+  font-size:.62rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  padding:.3rem .7rem; border-radius:50px; white-space:nowrap;
+  background:rgba(0,230,160,.13); border:1px solid var(--line-strong); color:#b6ffe4;
+}
+
+.credential-box{
+  background:rgba(0,0,0,.42);
+  border:1px solid rgba(255,255,255,.05);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-sm);
+  padding:.95rem 1rem;
+}
+.cred-row{
+  display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;
+  font-size:.76rem; padding:.28rem 0;
+}
+.cred-row + .cred-row{border-top:1px solid rgba(255,255,255,.045)}
+.cred-label{font-weight:600;color:var(--muted-2);min-width:88px;font-size:.72rem}
+.cred-row a{color:var(--accent-2);text-decoration:none;font-size:.75rem;word-break:break-all}
+.cred-row a:hover{text-decoration:underline}
+
+.copyable,.copy-icon{
+  cursor:pointer; user-select:none;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.06);
+  padding:.12rem .55rem; border-radius:50px;
+  font-size:.72rem; color:#cfe0f2;
+  transition:all .18s var(--ease);
+}
+.copy-icon{padding:.22rem .45rem;font-size:.68rem}
+.copyable:hover,.copy-icon:hover{background:var(--accent);color:#04121b;border-color:var(--accent)}
+.copyable:active,.copy-icon:active{transform:scale(.94)}
+
+.btn-demo,.btn-admin{
+  display:inline-flex;align-items:center;gap:.45rem;
+  padding:.55rem 1.05rem;border-radius:50px;
+  font-size:.74rem;font-weight:700;letter-spacing:.01em;
+  text-decoration:none; cursor:pointer; border:1px solid transparent;
+  transition:all .25s var(--ease);
+}
+.btn-demo{
+  background:linear-gradient(100deg,#00b478,#00e6a0);
+  color:#03170f; box-shadow:0 8px 22px -10px rgba(0,230,160,.9);
+}
+.btn-demo:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(0,230,160,1);color:#03170f}
+.btn-admin{
+  background:rgba(255,255,255,.05);color:#c9e6ff;border-color:var(--line-strong);
+}
+.btn-admin:hover{background:rgba(0,230,160,.14);color:#fff;transform:translateY(-2px)}
+
+/* Empty / loading state */
+.state-box{
+  grid-column:1/-1; text-align:center; padding:3.5rem 1.5rem;
+  background:var(--surface); border:1px dashed rgba(255,255,255,.1);
+  border-radius:var(--radius);
+}
+.state-box .ico{
+  width:64px;height:64px;border-radius:20px;margin:0 auto 1rem;
+  display:grid;place-items:center;font-size:1.5rem;color:var(--accent);
+  background:rgba(0,230,160,.09);border:1px solid var(--line-strong);
+}
+.skeleton{
+  height:230px;border-radius:var(--radius);
+  background:linear-gradient(100deg,rgba(255,255,255,.04) 30%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.04) 70%);
+  background-size:220% 100%;
+  animation:shimmer 1.4s infinite linear;
+  border:1px solid rgba(255,255,255,.05);
+}
+@keyframes shimmer{0%{background-position:120% 0}100%{background-position:-120% 0}}
+
+/* ============================================================
+   PRICING
+============================================================ */
+.premium-section{
+  position:relative;
+  background:
+    radial-gradient(700px 340px at 12% 0%, rgba(0,230,160,.1), transparent 65%),
+    radial-gradient(700px 340px at 88% 100%, rgba(56,189,248,.08), transparent 65%),
+    rgba(8,17,28,.72);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:28px;
+  padding:clamp(1.6rem,4vw,3rem);
+  overflow:hidden;
+}
+.package-card{
+  position:relative;
+  background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(9,18,30,.5));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius);
+  padding:1.6rem;
+  height:100%;
+  display:flex;flex-direction:column;
+  transition:transform .35s var(--ease), border-color .3s var(--ease), box-shadow .35s var(--ease);
+}
+.package-card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:0 24px 45px -25px rgba(0,230,160,.75)}
+.package-card.premium{
+  border-color:var(--accent);
+  background:linear-gradient(160deg,rgba(0,230,160,.13),rgba(9,18,30,.6));
+  box-shadow:0 0 0 1px rgba(0,230,160,.35), 0 26px 55px -28px rgba(0,230,160,.9);
+}
+@media(min-width:768px){.package-card.premium{transform:scale(1.025)}.package-card.premium:hover{transform:scale(1.025) translateY(-6px)}}
+.pkg-ico{
+  width:50px;height:50px;border-radius:15px;display:grid;place-items:center;
+  font-size:1.15rem;margin-bottom:1rem;
+  background:rgba(0,230,160,.1);border:1px solid var(--line-strong);color:var(--accent);
+}
+.package-card.premium .pkg-ico{background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.5);color:var(--accent-3)}
+.package-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.35rem}
+.package-price{font-size:2rem;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.1}
+.package-price small{font-size:.72rem;font-weight:600;color:var(--muted-2);letter-spacing:0}
+.package-card.premium .package-price{color:var(--accent)}
+.features-list{list-style:none;padding:0;margin:1.1rem 0 0;flex:1}
+.features-list li{
+  display:flex;align-items:center;gap:.65rem;
+  font-size:.82rem;color:#c9d8ea;
+  padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.045);
+}
+.features-list li:last-child{border-bottom:0}
+.features-list li i{width:16px;font-size:.78rem;flex-shrink:0}
+.btn-pkg{
+  width:100%;margin-top:1.3rem;padding:.72rem 1rem;border-radius:50px;
+  font-weight:700;font-size:.82rem;border:1px solid var(--line-strong);
+  background:rgba(0,230,160,.08);color:#c9ffe9;cursor:pointer;
+  transition:all .25s var(--ease);
+}
+.btn-pkg:hover{background:var(--accent);color:#04121b;border-color:var(--accent);transform:translateY(-2px)}
+.package-card.premium .btn-pkg{
+  background:linear-gradient(100deg,#00b478,#00e6a0);color:#03170f;border-color:transparent;
+  box-shadow:0 10px 26px -12px rgba(0,230,160,.95);
+}
+.ribbon{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(100deg,#fbbf24,#f59e0b);
+  color:#3b2606;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .9rem;border-radius:50px;white-space:nowrap;
+  box-shadow:0 8px 20px -8px rgba(251,191,36,.9);
+}
+
+/* Order summary */
+.order-card{
+  background:rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  padding:1.3rem;
+}
+.order-row{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:.62rem 0;font-size:.85rem;color:#c3d3e6;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.order-row:last-child{border-bottom:0}
+.order-row strong{color:#fff;font-weight:700}
+.advance-amount{color:var(--accent)!important;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+
+.timer-container{
+  background:linear-gradient(135deg,rgba(0,230,160,.16),rgba(0,180,120,.08));
+  border:1px solid var(--line-strong);
+  border-radius:var(--radius-sm);
+  padding:.55rem 1.1rem;text-align:center;
+  min-width:132px;
+}
+.timer-container .lbl{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.timer{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:700;color:var(--accent);line-height:1.2}
+
+.schedule-step{
+  flex:1;background:rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.05);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-sm);
+  padding:.75rem .6rem;text-align:center;
+  transition:all .25s var(--ease);
+}
+.schedule-step:hover{background:rgba(0,230,160,.09);transform:translateY(-3px)}
+.schedule-step .pct{font-size:1.05rem;font-weight:800;color:var(--accent);line-height:1.1}
+.schedule-step .ttl{font-size:.72rem;font-weight:600;color:#cfe0f2}
+.schedule-step .sub{font-size:.62rem;color:var(--muted-2)}
+
+.upi-box{
+  background:rgba(0,0,0,.42);
+  border:1px solid var(--line-strong);
+  border-radius:var(--radius-sm);
+  padding:1rem;
+}
+.upi-id{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.95rem;font-weight:600;letter-spacing:.02em;color:#eafff8;
+  background:rgba(0,230,160,.08);
+  border:1px dashed var(--line-strong);
+  border-radius:12px;padding:.65rem 1rem;text-align:center;
+  word-break:break-all;
+  transition:all .25s var(--ease);
+}
+.upi-id:hover{background:rgba(0,230,160,.14);transform:scale(1.01)}
+
+.qr-shell{
+  background:#fff;border-radius:18px;padding:12px;
+  display:inline-block;line-height:0;
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.9);
+}
+.qr-shell img,.qr-shell canvas{display:block;border-radius:8px}
+
+/* ============================================================
+   UPI APP SELECTOR
+============================================================ */
+.upi-apps{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.55rem;
+}
+@media(min-width:480px){
+  .upi-apps{grid-template-columns:repeat(4,1fr)}
+}
+
+.upi-app{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem .6rem;
+  background:rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;
+  color:#cfe0f2; font-size:.76rem; font-weight:700;
+  cursor:pointer;
+  transition:all .25s var(--ease);
+  font-family:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.upi-app:hover{
+  border-color:var(--line-strong);
+  background:rgba(0,230,160,.09);
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px -16px rgba(0,230,160,.9);
+}
+.upi-app:active{transform:translateY(0) scale(.97)}
+
+.upi-logo{
+  width:26px; height:26px; flex-shrink:0;
+  border-radius:8px;
+  display:grid; place-items:center;
+  font-weight:800; font-size:.78rem; color:#fff;
+  letter-spacing:-.02em;
+  box-shadow:0 4px 10px -4px rgba(0,0,0,.6);
+}
+.upi-gpay    {background:linear-gradient(135deg,#4285F4,#34A853)}
+.upi-phonepe {background:linear-gradient(135deg,#5f259f,#3b136b); font-size:.72rem}
+.upi-paytm   {background:linear-gradient(135deg,#00B9F1,#012B72)}
+.upi-bhim    {background:linear-gradient(135deg,#ff7a00,#e65100)}
+
+/* ============================================================
+   DELIVERY / OWNERSHIP CHECKLIST
+============================================================ */
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:.75rem;
+}
+@media(max-width:575.98px){
+  .delivery-grid{grid-template-columns:1fr}
+}
+
+.delivery-item{
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  padding:.95rem 1.05rem;
+  background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.012));
+  border:1px solid rgba(255,255,255,.065);
+  border-radius:12px;
+  transition:border-color .25s var(--ease), background .25s var(--ease), transform .25s var(--ease);
+  position:relative;
+}
+.delivery-item:hover{
+  border-color:rgba(0,230,160,.35);
+  background:linear-gradient(180deg,rgba(0,230,160,.055),rgba(0,230,160,.015));
+  transform:translateY(-1px);
+}
+
+.delivery-item .di-icon{
+  width:40px;height:40px;flex-shrink:0;
+  border-radius:10px;
+  display:grid;place-items:center;
+  font-size:.95rem;
+  background:rgba(0,230,160,.09);
+  border:1px solid rgba(0,230,160,.22);
+  color:var(--accent);
+  transition:all .25s var(--ease);
+}
+.delivery-item:hover .di-icon{
+  background:rgba(0,230,160,.16);
+  border-color:rgba(0,230,160,.4);
+}
+
+.delivery-item .di-body{flex:1;min-width:0}
+.delivery-item .di-title{
+  font-size:.85rem;
+  font-weight:600;
+  color:#e6f2ec;
+  letter-spacing:-.005em;
+  line-height:1.3;
+  margin-bottom:.15rem;
+}
+.delivery-item .di-desc{
+  font-size:.735rem;
+  color:var(--muted);
+  line-height:1.5;
+  margin:0;
+}
+
+/* Small "INCLUDED" tag on the right */
+.di-status{
+  flex-shrink:0;
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--accent);
+  padding:.28rem .55rem;
+  border:1px solid rgba(0,230,160,.35);
+  border-radius:6px;
+  background:rgba(0,230,160,.06);
+  white-space:nowrap;
+}
+
+/* Category heading inside the grid */
+.delivery-category{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  margin:.9rem 0 .1rem;
+}
+.delivery-category:first-child{margin-top:0}
+.delivery-category .dc-label{
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted-2);
+  white-space:nowrap;
+}
+.delivery-category .dc-line{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.09),transparent);
+}
+
+/* Guarantee callout */
+.guarantee-note{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1.05rem 1.2rem;
+  background:linear-gradient(120deg,rgba(0,230,160,.09),rgba(56,189,248,.03));
+  border:1px solid rgba(0,230,160,.28);
+  border-radius:12px;
+  flex-wrap:wrap;
+}
+.guarantee-note .gn-ico{
+  width:42px;height:42px;flex-shrink:0;
+  border-radius:11px;
+  display:grid;place-items:center;
+  font-size:1.05rem;
+  background:rgba(0,230,160,.14);
+  border:1px solid rgba(0,230,160,.35);
+  color:var(--accent);
+}
+.guarantee-note .gn-text{
+  flex:1;
+  min-width:200px;
+  font-size:.83rem;
+  color:#cfe0d8;
+  line-height:1.6;
+}
+.guarantee-note .gn-text strong{color:var(--accent);font-weight:600}
+
+/* ============================================================
+   OWNER
+============================================================ */
+.owner-card{
+  background:
+    radial-gradient(520px 260px at 0% 0%, rgba(251,191,36,.1), transparent 65%),
+    var(--surface);
+  border:1px solid rgba(255,255,255,.08);
+  border-left:4px solid var(--accent-3);
+  border-radius:var(--radius);
+  backdrop-filter:blur(18px);
+}
+.owner-avatar{
+  width:110px;height:110px;border-radius:32px;margin-inline:auto;
+  display:grid;place-items:center;font-size:2.6rem;
+  background:linear-gradient(150deg,rgba(251,191,36,.2),rgba(0,230,160,.12));
+  border:1px solid rgba(251,191,36,.4);
+  color:var(--accent-3);
+  box-shadow:0 0 40px -14px rgba(251,191,36,.9);
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact-icon-box{
+  background:rgba(0,0,0,.3);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  padding:1.6rem 1.2rem;text-align:center;height:100%;
+  transition:all .3s var(--ease);
+}
+.contact-icon-box:hover{
+  transform:translateY(-5px);
+  border-color:var(--line-strong);
+  background:rgba(0,230,160,.07);
+  box-shadow:0 20px 40px -24px rgba(0,230,160,.9);
+}
+.contact-icon-box h5{font-size:.95rem;font-weight:700;margin:.9rem 0 .35rem}
+.contact-icon-box p{font-size:.78rem;color:var(--muted);margin-bottom:1rem}
+
+/* ============================================================
+   FEATURES (WHY US)
+============================================================ */
+.feature-item{display:flex;gap:1rem;align-items:flex-start;padding:.55rem 0}
+.feature-item .fi{
+  width:44px;height:44px;border-radius:14px;flex-shrink:0;
+  display:grid;place-items:center;font-size:1rem;
+  background:rgba(0,230,160,.09);border:1px solid var(--line-strong);color:var(--accent);
+  transition:all .3s var(--ease);
+}
+.feature-item:hover .fi{background:var(--accent);color:#04121b;transform:rotate(-6deg) scale(1.05)}
+.feature-item h5{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.feature-item p{font-size:.8rem;color:var(--muted);margin:0;line-height:1.6}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  background:rgba(4,10,18,.6);
+  backdrop-filter:blur(10px);
+}
+footer a{color:var(--muted);text-decoration:none;font-size:.8rem;transition:color .2s var(--ease)}
+footer a:hover{color:var(--accent)}
+
+/* ============================================================
+   FLOATING UI
+============================================================ */
+.floating-social-group{
+  position:fixed;left:18px;bottom:18px;z-index:1030;
+  display:flex;flex-direction:column;gap:12px;
+}
+.float-icon{
+  width:50px;height:50px;border-radius:16px;
+  display:grid;place-items:center;font-size:1.3rem;color:#fff;
+  text-decoration:none;
+  box-shadow:0 14px 30px -14px rgba(0,0,0,.95);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.float-icon:hover{transform:translateY(-4px) scale(1.05);color:#fff}
+.whatsapp-float{background:linear-gradient(140deg,#25D366,#128C7E)}
+.telegram-float{background:linear-gradient(140deg,#37AEE2,#1E96C8)}
+
+.back-to-top{
+  position:fixed;right:18px;bottom:18px;z-index:1030;
+  width:46px;height:46px;border-radius:14px;cursor:pointer;
+  display:grid;place-items:center;
+  background:rgba(13,25,40,.9);
+  border:1px solid var(--line-strong);color:var(--accent);
+  backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:all .3s var(--ease);
+}
+.back-to-top.show{opacity:1;visibility:visible;transform:none}
+.back-to-top:hover{background:var(--accent);color:#04121b}
+
+/* Toast */
+.toast-msg{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);
+  z-index:1090;pointer-events:none;
+  background:rgba(9,20,32,.96);
+  border:1px solid var(--line-strong);
+  color:#d6ffee;font-size:.82rem;font-weight:600;
+  padding:.7rem 1.4rem;border-radius:50px;
+  box-shadow:0 20px 45px -20px #000;
+  backdrop-filter:blur(12px);
+  opacity:0;transition:opacity .25s var(--ease), transform .25s var(--ease);
+  max-width:calc(100vw - 2rem);text-align:center;
+}
+.toast-msg.show{opacity:1;transform:translate(-50%,0)}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* Offcanvas */
+.offcanvas{background:#08111c!important;border-right:1px solid var(--line)!important}
+.offcanvas .nav-link{
+  color:#cbd9ea;font-weight:600;font-size:.92rem;
+  padding:.7rem .9rem;border-radius:12px;
+  display:flex;align-items:center;gap:.8rem;
+  transition:all .2s var(--ease);
+}
+.offcanvas .nav-link:hover{background:rgba(0,230,160,.1);color:var(--accent)}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:991.98px){
+  .filter-sidebar{position:static;margin-bottom:.5rem}
+  .filter-btn{margin-bottom:.4rem}
+  #filterGroup{flex-direction:row!important;flex-wrap:wrap}
+  .filter-btn{width:auto;flex:1 1 auto;justify-content:center;font-size:.78rem;padding:.65rem .9rem}
+  .filter-btn .filter-count{display:none}
+}
+@media(max-width:575.98px){
+  .demo-grid{grid-template-columns:1fr}
+  .hero-stats{gap:.5rem}
+  .stat-pill{font-size:.7rem;padding:.45rem .85rem}
+  .cred-label{min-width:100%;font-size:.68rem}
+  .floating-social-group{left:14px;bottom:14px;gap:10px}
+  .float-icon{width:46px;height:46px;font-size:1.15rem;border-radius:14px}
+  .back-to-top{right:14px;bottom:14px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================ TOAST ============================ -->
+<div id="toastMsg" class="toast-msg" role="status" aria-live="polite">✓ Copied to clipboard</div>
+
+<!-- ============================ NAVBAR ============================ -->
+<header class="glass-nav py-2 position-sticky top-0" id="mainNav">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center gap-3">
+
+      <a href="#" class="brand-minimal">
+        <span class="brand-mark"><i class="fas fa-crown"></i></span>
+        <span>
+          <span class="brand-text">Develop With Aman</span>
+          <small>Tyson Game Studio</small>
+        </span>
+      </a>
+
+      <nav class="d-none d-lg-flex align-items-center gap-4" aria-label="Primary">
+        <a href="#demos-section"   class="nav-link-custom">Demos</a>
+        <a href="#payment-package" class="nav-link-custom">Packages</a>
+        <a href="#delivery-section" class="nav-link-custom">Delivery</a>
+        <a href="#info-section"    class="nav-link-custom">Why Us</a>
+        <a href="#owner-section"   class="nav-link-custom">Owner</a>
+        <a href="#contact-section" class="nav-link-custom">Contact</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="tel:+918092043236" class="btn-call d-none d-sm-inline-flex">
+          <i class="fas fa-headset"></i> +91 80920 43236
+        </a>
+        <button class="btn-menu d-lg-none" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero-main">
+  <div class="container">
+
+    <span class="hero-badge">
+      <i class="fas fa-bolt"></i> Premium Game Solutions
+    </span>
+
+    <h1 class="main-brand">DEVELOP WITH AMAN</h1>
+
+    <div class="sub-brand">
+      Tyson Game Demos &nbsp;•&nbsp; 24-Hour Delivery &nbsp;•&nbsp; Full-Stack Game Development
+    </div>
+
+    <p class="hero-desc">
+      Enterprise-grade game scripts, secure admin panels, signed Android APKs,
+      hosting &amp; domain — delivered end-to-end, ready to launch.
+    </p>
+
+    <div class="hero-stats">
+      <span class="stat-pill"><i class="fas fa-rocket"></i> 100+ Deployments</span>
+      <span class="stat-pill"><i class="fas fa-clock"></i> 24h Turnaround</span>
+      <span class="stat-pill"><i class="fas fa-code"></i> 100% Source Code</span>
+      <span class="stat-pill"><i class="fas fa-headset"></i> 24/7 Support</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ DEMOS ============================ -->
+<section id="demos-section" class="container py-4 py-lg-5">
+  <div class="row g-4">
+
+    <!-- Sidebar -->
+    <div class="col-lg-3">
+      <aside class="filter-sidebar">
+        <div class="side-title"><i class="fas fa-compass me-2"></i>Categories</div>
+
+        <div id="filterGroup" class="d-flex flex-column">
+          <button class="filter-btn active" data-category="all">
+            <i class="fas fa-th-large"></i> All Demos
+            <span class="filter-count" data-count="all">0</span>
+          </button>
+          <button class="filter-btn" data-category="color-prediction">
+            <i class="fas fa-chart-line"></i> Color Prediction
+            <span class="filter-count" data-count="color-prediction">0</span>
+          </button>
+          <button class="filter-btn" data-category="casino">
+            <i class="fas fa-dice-d6"></i> Casino &amp; iGaming
+            <span class="filter-count" data-count="casino">0</span>
+          </button>
+        </div>
+
+        <hr class="my-4" style="border-color:rgba(255,255,255,.08);opacity:1">
+
+        <div class="side-cta">
+          <i class="fas fa-wand-magic-sparkles fs-5 mb-2" style="color:var(--accent)"></i>
+          <p class="small mb-3 text-muted-2">Need a custom game or feature?</p>
+          <a href="#owner-section" class="btn-pkg d-inline-block text-decoration-none" style="width:auto;padding:.55rem 1.2rem">
+            Talk to Aman <i class="fas fa-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Cards -->
+    <div class="col-lg-9">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+          <span class="eyebrow"><i class="fas fa-circle" style="font-size:.4rem"></i> Live Instances</span>
+          <h2 class="section-title mt-1 mb-0">Explore Working Demos</h2>
+        </div>
+        <span class="stat-pill" id="demoCount"><i class="fas fa-cubes"></i> 0 demos</span>
+      </div>
+
+      <div id="cardsContainer" class="demo-grid" aria-live="polite">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ PACKAGES + PAYMENT ============================ -->
+<section id="payment-package" class="container mb-5">
+  <div class="premium-section reveal">
+
+    <div class="text-center mb-5">
+      <span class="hero-badge" style="font-size:.68rem"><i class="fas fa-fire"></i> Limited Offer</span>
+      <h2 class="section-title mt-3">Complete Game Package in <span style="color:var(--accent)">24 Hours</span></h2>
+      <p class="section-sub mt-2">Hosting, domain, admin panel, APK, website &amp; full source script — everything included.</p>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-4">
+        <div class="package-card">
+          <div class="pkg-ico"><i class="fas fa-mobile-screen"></i></div>
+          <h4>Basic Setup</h4>
+          <div class="package-price">₹5,000 <small>/ one-time</small></div>
+          <ul class="features-list">
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> 6 Months Hosting</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Basic Admin Panel</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Full Game Script</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Website Setup</li>
+            <li><i class="fas fa-xmark" style="color:#f87171"></i> <span style="color:#7d8ea6">No Android APK</span></li>
+            <li><i class="fas fa-xmark" style="color:#f87171"></i> <span style="color:#7d8ea6">No Custom Domain</span></li>
+          </ul>
+          <button class="btn-pkg" onclick="selectPackage('basic')">Select Basic</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="package-card premium">
+          <div class="ribbon">🔥 Most Popular</div>
+          <div class="pkg-ico"><i class="fas fa-gamepad"></i></div>
+          <h4>Complete Package</h4>
+          <div class="package-price">₹10,000 <small>/ one-time</small></div>
+          <ul class="features-list">
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> 1 Year Premium Hosting</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> 1 Year Domain (.com / .in)</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Advanced Admin Panel</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Signed Android APK</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> phpMyAdmin Access</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> 24/7 Priority Support</li>
+          </ul>
+          <button class="btn-pkg" onclick="selectPackage('complete')">Select Complete</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="package-card">
+          <div class="pkg-ico"><i class="fas fa-rocket"></i></div>
+          <h4>Enterprise</h4>
+          <div class="package-price">₹25,000 <small>/ one-time</small></div>
+          <ul class="features-list">
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> 2 Years Enterprise Hosting</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Custom Admin Panel</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Android + iOS Apps</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Dedicated Priority Support</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Custom Feature Development</li>
+            <li><i class="fas fa-check" style="color:var(--accent)"></i> Source Code + Docs</li>
+          </ul>
+          <button class="btn-pkg" onclick="selectPackage('enterprise')">Select Enterprise</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Payment -->
+    <div class="row g-4" id="paymentSection">
+
+      <div class="col-lg-7">
+        <div class="surface p-4 h-100">
+
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+            <h3 class="section-title mb-0" style="font-size:1.25rem">
+              <i class="fas fa-lock me-2" style="color:var(--accent)"></i>Secure Payment
+            </h3>
+            <div class="timer-container">
+              <div class="lbl">Offer Expires In</div>
+              <div class="timer" id="countdownTimer">--:--:--</div>
+            </div>
+          </div>
+
+          <div class="order-card">
+            <h5 class="fw-bold mb-3" style="font-size:.95rem">
+              <i class="fas fa-receipt me-2" style="color:var(--accent)"></i>Order Summary
+            </h5>
+
+            <div class="order-row">
+              <span>Selected Package</span>
+              <strong id="selectedPackage">Complete Game Package</strong>
+            </div>
+            <div class="order-row">
+              <span>Total Price</span>
+              <strong id="totalPrice">₹10,000</strong>
+            </div>
+            <div class="order-row">
+              <span>Advance Payable (40%)</span>
+              <strong class="advance-amount" id="advanceAmount">₹4,000</strong>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <h6 class="fw-bold mb-3" style="font-size:.85rem">
+              <i class="fas fa-calendar-week me-2" style="color:var(--accent)"></i>Payment Schedule
+            </h6>
+            <div class="d-flex gap-2 flex-column flex-sm-row">
+              <div class="schedule-step">
+                <div class="pct">40%</div>
+                <div class="ttl">Advance</div>
+                <div class="sub">to start work</div>
+              </div>
+              <div class="schedule-step">
+                <div class="pct">30%</div>
+                <div class="ttl">After Game Live</div>
+                <div class="sub">demo ready</div>
+              </div>
+              <div class="schedule-step">
+                <div class="pct">30%</div>
+                <div class="ttl">On Delivery</div>
+                <div class="sub">final files</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ UPI PAYMENT BOX ============ -->
+          <div class="upi-box mt-4">
+            <div class="text-center mb-2" style="font-size:.8rem;color:var(--muted)">
+              <i class="fas fa-qrcode me-1" style="color:var(--accent)"></i>
+              Send advance payment to
+            </div>
+
+            <!-- Clickable UPI ID -->
+            <div class="upi-id" id="displayUpiId"
+                 onclick="copyUpiId()" title="Click to copy" style="cursor:pointer">
+              <i class="fas fa-copy me-2" style="font-size:.85rem;opacity:.75"></i>
+              <span id="upiIdText">8092043236@ybl</span>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="d-flex gap-2 justify-content-center mt-3 flex-wrap">
+              <button class="btn-demo" onclick="copyUpiId()">
+                <i class="fas fa-copy"></i> Copy UPI ID
+              </button>
+              <button class="btn-admin" onclick="openAllUpiApps()">
+                <i class="fas fa-arrow-up-right-from-square"></i> Let System Pick
+              </button>
+            </div>
+
+            <!-- UPI App selector -->
+            <div class="mt-4">
+              <p class="mb-2 text-center" style="font-size:.74rem;color:var(--muted-2);letter-spacing:.08em;text-transform:uppercase;font-weight:700">
+                <i class="fas fa-bolt me-1" style="color:var(--accent)"></i>
+                Or pay directly via app
+              </p>
+
+              <div class="upi-apps">
+                <button class="upi-app" onclick="payWithUpiApp('gpay')" type="button">
+                  <span class="upi-logo upi-gpay">G</span>
+                  <span>G Pay</span>
+                </button>
+
+                <button class="upi-app" onclick="payWithUpiApp('phonepe')" type="button">
+                  <span class="upi-logo upi-phonepe">Pe</span>
+                  <span>PhonePe</span>
+                </button>
+
+                <button class="upi-app" onclick="payWithUpiApp('paytm')" type="button">
+                  <span class="upi-logo upi-paytm">P</span>
+                  <span>Paytm</span>
+                </button>
+
+                <button class="upi-app" onclick="payWithUpiApp('bhim')" type="button">
+                  <span class="upi-logo upi-bhim">B</span>
+                  <span>BHIM</span>
+                </button>
+              </div>
+            </div>
+
+            <p class="text-center mb-0 mt-3" style="font-size:.72rem;color:var(--muted-2)">
+              After payment, share the screenshot on Telegram for instant confirmation.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="surface p-4 h-100 d-flex flex-column align-items-center justify-content-center text-center">
+          <h3 class="section-title mb-1" style="font-size:1.15rem">
+            <i class="fas fa-qrcode me-2" style="color:var(--accent)"></i>Scan &amp; Pay
+          </h3>
+          <p style="font-size:.78rem;color:var(--muted);margin-bottom:1.2rem">
+            Works with Google Pay, PhonePe, Paytm &amp; all UPI apps
+          </p>
+
+          <div class="qr-shell" id="qrBox"></div>
+
+          <div class="mono mt-3" style="font-size:.78rem;color:var(--muted)" id="qrCaption">
+            Amount: ₹4,000
+          </div>
+
+          <a href="https://t.me/pluginxpertcode" target="_blank" rel="noopener"
+             class="btn-admin mt-4 text-decoration-none">
+            <i class="fab fa-telegram"></i> Confirm on Telegram
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DELIVERY / OWNERSHIP CHECKLIST ============================ -->
+<section id="delivery-section" class="container mb-5">
+  <div class="surface p-4 p-lg-5 reveal">
+
+    <div class="text-center mb-5">
+      <span class="eyebrow"><i class="fas fa-box-open"></i> What You Get</span>
+      <h2 class="section-title mt-2">Full Ownership &amp; Access Delivery</h2>
+      <p class="section-sub mt-2">
+        Every project is delivered with <strong style="color:var(--accent)">complete ownership</strong> —
+        hosting, domain, source code, database and every credential under your control.
+      </p>
+    </div>
+
+    <div class="delivery-grid">
+
+      <!-- ─── Infrastructure ─── -->
+      <div class="delivery-category">
+        <span class="dc-label">Infrastructure</span>
+        <span class="dc-line"></span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-server"></i></div>
+        <div class="di-body">
+          <div class="di-title">Hosting Access</div>
+          <p class="di-desc">Full access to hosting account &amp; control panel (cPanel / VPS)</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-globe"></i></div>
+        <div class="di-body">
+          <div class="di-title">Domain Access</div>
+          <p class="di-desc">Domain ownership transfer with complete DNS &amp; renewal control</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-shield-halved"></i></div>
+        <div class="di-body">
+          <div class="di-title">Security &amp; SSL</div>
+          <p class="di-desc">SSL certificate installed with basic security hardening</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <!-- ─── Code & Data ─── -->
+      <div class="delivery-category">
+        <span class="dc-label">Code &amp; Data</span>
+        <span class="dc-line"></span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-code"></i></div>
+        <div class="di-body">
+          <div class="di-title">Source Code</div>
+          <p class="di-desc">Complete unencrypted source code — fully editable, yours forever</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-database"></i></div>
+        <div class="di-body">
+          <div class="di-title">Database Access</div>
+          <p class="di-desc">Full database access (phpMyAdmin / SSH) with backup file</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-cloud-arrow-down"></i></div>
+        <div class="di-body">
+          <div class="di-title">Complete Backup</div>
+          <p class="di-desc">Full backup of website, database and all files handed over</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <!-- ─── Access & Control ─── -->
+      <div class="delivery-category">
+        <span class="dc-label">Access &amp; Control</span>
+        <span class="dc-line"></span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-user-shield"></i></div>
+        <div class="di-body">
+          <div class="di-title">Admin Panel</div>
+          <p class="di-desc">Full admin access with option to change username &amp; password</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-plug"></i></div>
+        <div class="di-body">
+          <div class="di-title">API Access</div>
+          <p class="di-desc">All integrated APIs listed with credentials under your control</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="di-body">
+          <div class="di-title">Payment Gateway</div>
+          <p class="di-desc">Full gateway access, dashboard &amp; complete integration details</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+      <!-- ─── Documentation ─── -->
+      <div class="delivery-category">
+        <span class="dc-label">Documentation</span>
+        <span class="dc-line"></span>
+      </div>
+
+      <div class="delivery-item">
+        <div class="di-icon"><i class="fas fa-book"></i></div>
+        <div class="di-body">
+          <div class="di-title">Setup Guide</div>
+          <p class="di-desc">Basic setup documentation with all access credentials</p>
+        </div>
+        <span class="di-status">Included</span>
+      </div>
+
+    </div>
+
+    <div class="guarantee-note mt-4">
+      <div class="gn-ico"><i class="fas fa-shield-halved"></i></div>
+      <div class="gn-text">
+        <strong>Ownership Guarantee:</strong> After final delivery, all ownership and access
+        is transferred to you — <strong>no lock-in, no hidden control</strong>. Everything
+        runs on your name and your accounts.
+      </div>
+      <a href="https://t.me/tyson_owner" target="_blank" rel="noopener"
+         class="btn-demo text-decoration-none">
+        <i class="fab fa-telegram"></i> Confirm With Aman
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ OWNER ============================ -->
+<section id="owner-section" class="container mb-5">
+  <div class="owner-card p-4 p-lg-5 reveal">
+    <div class="row align-items-center g-4">
+
+      <div class="col-md-3 text-center">
+        <div class="owner-avatar"><i class="fas fa-user-tie"></i></div>
+      </div>
+
+      <div class="col-md-9">
+        <span class="eyebrow"><i class="fas fa-crown"></i> Founder</span>
+        <h2 class="section-title mt-2 mb-2">About the Owner — Aman</h2>
+
+        <p style="color:#c0d1e5;font-size:.92rem">
+          Full-stack game developer &amp; founder of <strong style="color:var(--accent)">Develop With Aman</strong>.
+          Specialised in colour prediction platforms, casino scripts, and complete iGaming ecosystems.
+          <strong>5+ years</strong> of experience with <strong>100+ projects</strong> delivered worldwide.
+        </p>
+
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          <a href="https://tyson-portfolio-v2.github.io/BIO/" target="_blank" rel="noopener"
+             class="btn-demo text-decoration-none">
+            <i class="fas fa-globe"></i> View Full Portfolio
+          </a>
+          <a href="https://t.me/tyson_owner" target="_blank" rel="noopener"
+             class="btn-admin text-decoration-none">
+            <i class="fab fa-telegram"></i> @tyson_owner
+          </a>
+        </div>
+
+        <div class="mt-3" style="font-size:.76rem;color:var(--muted-2)">
+          <i class="fas fa-circle-check" style="color:var(--accent)"></i>
+          Verified Creator &nbsp;•&nbsp; Premium Game Solutions &nbsp;•&nbsp; 24/7 Availability
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section id="contact-section" class="container mb-5">
+  <div class="surface p-4 p-lg-5 reveal">
+
+    <div class="text-center mb-5">
+      <span class="eyebrow"><i class="fas fa-headset"></i> Get in Touch</span>
+      <h2 class="section-title mt-2">Contact &amp; Support</h2>
+      <p class="section-sub mt-2">Reach out on any channel — we usually reply within minutes.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="contact-icon-box">
+          <i class="fab fa-telegram" style="font-size:2.2rem;color:#38bdf8"></i>
+          <h5>Telegram Direct</h5>
+          <p>@tyson_owner</p>
+          <button class="btn-admin copyable-telegram" data-copy="@tyson_owner">
+            <i class="fas fa-copy"></i> Copy Username
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="contact-icon-box">
+          <i class="fab fa-whatsapp" style="font-size:2.2rem;color:#25D366"></i>
+          <h5>WhatsApp</h5>
+          <p>+91 80920 43236</p>
+          <a href="https://wa.me/918092043236?text=Hi%20Aman%2C%20I%27m%20interested%20in%20a%20game%20development%20package"
+             target="_blank" rel="noopener" class="btn-demo text-decoration-none">
+            <i class="fab fa-whatsapp"></i> Chat Now
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="contact-icon-box">
+          <i class="fab fa-youtube" style="font-size:2.2rem;color:#ef4444"></i>
+          <h5>YouTube Channel</h5>
+          <p>@developwithaman</p>
+          <a href="https://youtube.com/@developwithaman?si=Qt9Uc01-mnJ3OaXn"
+             target="_blank" rel="noopener" class="btn-admin text-decoration-none">
+            <i class="fab fa-youtube"></i> Subscribe
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="order-card text-center" style="font-size:.82rem;color:#c3d3e6">
+          <i class="fas fa-envelope me-2" style="color:var(--accent)"></i>
+          aman@developwithaman.com
+          <span class="mx-2" style="color:var(--muted-2)">|</span>
+          <i class="fab fa-telegram me-2" style="color:var(--accent-2)"></i>
+          Priority support: @pluginxpertcode
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WHY US ============================ -->
+<section id="info-section" class="container mb-5">
+  <div class="surface p-4 p-lg-5 reveal">
+
+    <div class="text-center mb-5">
+      <span class="eyebrow"><i class="fas fa-circle-info"></i> Why Us</span>
+      <h2 class="section-title mt-2">Why Choose Develop With Aman?</h2>
+    </div>
+
+    <div class="row g-4 g-lg-5">
+
+      <div class="col-md-6">
+        <div class="feature-item">
+          <div class="fi"><i class="fas fa-clock"></i></div>
+          <div>
+            <h5>24-Hour Delivery</h5>
+            <p>Fully functional game, admin panel and APK delivered within 24 hours after advance payment.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="fi"><i class="fas fa-code"></i></div>
+          <div>
+            <h5>100% Source Code</h5>
+            <p>Complete PHP / MySQL script — fully editable, unencrypted, and yours to own forever.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="fi"><i class="fas fa-mobile-screen-button"></i></div>
+          <div>
+            <h5>Android APK + Website</h5>
+            <p>Signed APK ready for distribution, plus a fully responsive mobile web app.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-item">
+          <div class="fi"><i class="fas fa-shield-halved"></i></div>
+          <div>
+            <h5>Secure Admin Panel</h5>
+            <p>Advanced dashboard with user management, withdrawal logs, analytics and role control.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="fi"><i class="fas fa-database"></i></div>
+          <div>
+            <h5>phpMyAdmin Access</h5>
+            <p>Full database control and backup capability — complete transparency, no lock-in.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="fi"><i class="fas fa-headset"></i></div>
+          <div>
+            <h5>24/7 Dedicated Support</h5>
+            <p>Free installation, bug fixes and one month of complimentary technical support.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="my-4" style="border-color:rgba(255,255,255,.08);opacity:1">
+
+    <p class="text-center mb-0" style="font-size:.85rem;color:var(--muted)">
+      <i class="fas fa-bolt me-1" style="color:var(--accent-3)"></i>
+      100+ successful game deployments &nbsp;•&nbsp; Trusted by global clients &nbsp;•&nbsp; Money-back guarantee
+    </p>
+
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="pt-4 pb-4">
+  <div class="container">
+    <div class="row gy-3 align-items-center">
+
+      <div class="col-md-6">
+        <p class="mb-0" style="font-size:.78rem;color:var(--muted-2)">
+          © <span id="year">2025</span> Develop With Aman &nbsp;|&nbsp; Tyson Game Demos &nbsp;|&nbsp; Premium Game Dev Solutions
+        </p>
+      </div>
+
+      <div class="col-md-6">
+        <div class="d-flex gap-4 justify-content-md-end flex-wrap">
+          <a href="https://t.me/pluginxpertcode" target="_blank" rel="noopener"><i class="fab fa-telegram me-1"></i> Telegram</a>
+          <a href="https://youtube.com/@developwithaman" target="_blank" rel="noopener"><i class="fab fa-youtube me-1"></i> YouTube</a>
+          <a href="https://tyson-portfolio-v2.github.io/BIO/" target="_blank" rel="noopener"><i class="fas fa-user me-1"></i> Owner BIO</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ FLOATING ============================ -->
+<div class="floating-social-group">
+  <a href="https://wa.me/918092043236?text=I%20want%20to%20explore%20premium%20game%20demos"
+     target="_blank" rel="noopener" class="float-icon whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://t.me/tyson_owner" target="_blank" rel="noopener"
+     class="float-icon telegram-float" aria-label="Telegram">
+    <i class="fab fa-telegram-plane"></i>
+  </a>
+</div>
+
+<div class="back-to-top" id="backToTop" role="button" tabindex="0" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- ============================ MOBILE MENU ============================ -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+  <div class="offcanvas-header border-bottom" style="border-color:rgba(255,255,255,.08)!important">
+    <h5 class="offcanvas-title fw-bold" id="mobileMenuLabel" style="font-size:1rem">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <nav class="nav flex-column gap-1">
+      <a href="#demos-section"   class="nav-link" data-bs-dismiss="offcanvas"><i class="fas fa-cubes"></i> Demos</a>
+      <a href="#payment-package" class="nav-link" data-bs-dismiss="offcanvas"><i class="fas fa-tags"></i> Packages &amp; Payment</a>
+      <a href="#delivery-section" class="nav-link" data-bs-dismiss="offcanvas"><i class="fas fa-box-open"></i> Delivery &amp; Ownership</a>
+      <a href="#info-section"    class="nav-link" data-bs-dismiss="offcanvas"><i class="fas fa-circle-info"></i> Why Us</a>
+      <a href="#owner-section"   class="nav-link" data-bs-dismiss="offcanvas"><i class="fas fa-crown"></i> Owner Bio</a>
+      <a href="#contact-section" class="nav-link" data-bs-dismiss="offcanvas"><i class="fas fa-headset"></i> Contact</a>
+    </nav>
+
+    <a href="tel:+918092043236" class="btn-demo w-100 justify-content-center mt-4 text-decoration-none">
+      <i class="fas fa-phone"></i> Call +91 80920 43236
+    </a>
+  </div>
+</div>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+/* ============================================================
+   🔧 CONFIG — UPI / CONTACT
+============================================================ */
+const CONFIG = {
+  upiId    : "8092043236@ybl",
+  payeeName: "Develop With Aman",
+  telegram : "@tyson_owner",
+  packages : {
+    basic      : { name: "Basic Setup Package",    price: 5000,  advance: 2000  },
+    complete   : { name: "Complete Game Package",  price: 10000, advance: 4000  },
+    enterprise : { name: "Enterprise Package",     price: 25000, advance: 10000 }
+  }
+};
+
+/* ============================================================
+   🔗 UPI DEEP-LINK SCHEMES
+============================================================ */
+const UPI_SCHEMES = {
+  gpay:    'tez://upi/pay',
+  phonepe: 'phonepe://pay',
+  paytm:   'paytmmp://pay',
+  bhim:    'upi://pay',
+  any:     'upi://pay'
+};
+
+const APP_LABEL = {
+  gpay:    'Google Pay',
+  phonepe: 'PhonePe',
+  paytm:   'Paytm',
+  bhim:    'BHIM UPI',
+  any:     'UPI app'
+};
+
+/* ============================================================
+   🎮 DEMO DATA
+   ------------------------------------------------------------
+   live: true  ➜  Website par dikhega
+   live: false ➜  Website par HIDE ho jayega
+
+   Naya demo add karne ke liye niche wala object copy karke
+   array me paste karein aur values badal dein.
+============================================================ */
+const gamesData = [
+  /*
+  {
+    live      : true,
+    name      : "Demo Game Name",
+    category  : "color-prediction",        // "color-prediction" | "casino"
+    userUrl   : "https://your-demo-link.com",
+    username  : "demo_user",
+    password  : "demo_pass",
+    adminUrl  : "https://your-demo-link.com/admin",
+    adminUser : "admin",
+    adminPass : "admin123"
+  }
+  */
+];
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+const $  = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+function escapeHtml(str) {
+  return String(str ?? "").replace(/[&<>"']/g, m => (
+    { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[m]
+  ));
+}
+
+function showToast(msg) {
+  const toast = $("#toastMsg");
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+function copyToClipboard(text) {
+  const done = () => showToast("✓ Copied: " + String(text).slice(0, 28));
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, done) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.cssText = "position:absolute;left:-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); done(); } catch (e) { showToast("⚠ Copy failed"); }
+  document.body.removeChild(ta);
+}
+
+/* ============================================================
+   DEMO RENDERING
+============================================================ */
+let currentCategory = "all";
+
+function getLiveGames() {
+  return (Array.isArray(gamesData) ? gamesData : []).filter(g => g && g.live === true);
+}
+
+function updateFilterCounts() {
+  const live = getLiveGames();
+  $$(".filter-count").forEach(el => {
+    const key = el.dataset.count;
+    el.textContent = key === "all"
+      ? live.length
+      : live.filter(g => g.category === key).length;
+  });
+}
+
+function renderCards() {
+  const container = $("#cardsContainer");
+  if (!container) return;
+
+  const live = getLiveGames();
+  const filtered = currentCategory === "all"
+    ? live
+    : live.filter(g => g.category === currentCategory);
+
+  const countEl = $("#demoCount");
+  if (countEl) countEl.innerHTML = `<i class="fas fa-cubes"></i> ${filtered.length} demo${filtered.length === 1 ? "" : "s"}`;
+
+  updateFilterCounts();
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="state-box">
+        <div class="ico"><i class="fas fa-satellite-dish"></i></div>
+        <h4 class="fw-bold mb-2" style="font-size:1.05rem">No demos available right now</h4>
+        <p class="mb-4" style="font-size:.85rem;color:var(--muted);max-width:420px;margin-inline:auto">
+          ${live.length === 0
+            ? "New live demos are being prepared. Contact us directly for a private walkthrough."
+            : "There are no demos in this category yet. Try another category."}
+        </p>
+        <a href="https://t.me/tyson_owner" target="_blank" rel="noopener" class="btn-demo text-decoration-none">
+          <i class="fab fa-telegram"></i> Request a Private Demo
+        </a>
+      </div>`;
+    return;
+  }
+
+  const catLabel = {
+    "color-prediction": "🎨 Color Prediction",
+    "casino": "🎰 Casino / iGaming"
+  };
+
+  container.innerHTML = filtered.map((game, i) => {
+    const uUrl = escapeHtml(game.userUrl || "#");
+    const aUrl = escapeHtml(game.adminUrl || "#");
+    const shortAdmin = String(game.adminUrl || "").replace(/^https?:\/\//, "").slice(0, 42);
+
+    return `
+    <article class="game-card" style="animation-delay:${i * 60}ms">
+      <div class="card-header-plain">
+        <h5>${escapeHtml(game.name || "Untitled Demo")}</h5>
+        <span class="badge-category">${catLabel[game.category] || "Demo"}</span>
+      </div>
+
+      <div class="p-3 p-sm-4">
+        <div class="credential-box">
+
+          <div class="cred-row">
+            <span class="cred-label">🌐 User URL</span>
+            <a href="${uUrl}" target="_blank" rel="noopener">${escapeHtml(String(game.userUrl || "").replace(/^https?:\/\//, ""))}</a>
+            <i class="fas fa-copy copy-icon" data-copy="${uUrl}" title="Copy URL"></i>
+          </div>
+
+          <div class="cred-row">
+            <span class="cred-label">👤 Login</span>
+            <span class="copyable" data-copy="${escapeHtml(game.username)}">${escapeHtml(game.username)}</span>
+            <span style="color:var(--muted-2)">/</span>
+            <span class="copyable" data-copy="${escapeHtml(game.password)}">${escapeHtml(game.password)}</span>
+          </div>
+
+          <div class="cred-row">
+            <span class="cred-label">⚙️ Admin</span>
+            <a href="${aUrl}" target="_blank" rel="noopener">${escapeHtml(shortAdmin)}</a>
+            <i class="fas fa-copy copy-icon" data-copy="${aUrl}" title="Copy URL"></i>
+          </div>
+
+          <div class="cred-row">
+            <span class="cred-label">🔐 Admin Auth</span>
+            <span class="copyable" data-copy="${escapeHtml(game.adminUser)}">${escapeHtml(game.adminUser)}</span>
+            <span style="color:var(--muted-2)">/</span>
+            <span class="copyable" data-copy="${escapeHtml(game.adminPass)}">${escapeHtml(game.adminPass)}</span>
+          </div>
+
+        </div>
+
+        <div class="d-flex gap-2 mt-3 flex-wrap">
+          <a href="${uUrl}" target="_blank" rel="noopener" class="btn-demo">
+            <i class="fas fa-play"></i> Launch Demo
+          </a>
+          <a href="${aUrl}" target="_blank" rel="noopener" class="btn-admin">
+            <i class="fas fa-shield-halved"></i> Admin Panel
+          </a>
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+document.addEventListener("click", e => {
+  const el = e.target.closest(".copyable, .copy-icon");
+  if (!el) return;
+  e.stopPropagation();
+  const txt = el.getAttribute("data-copy") || el.textContent.trim();
+  if (txt) copyToClipboard(txt);
+});
+
+/* ============================================================
+   FILTERS
+============================================================ */
+function initFilters() {
+  $$(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      $$(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = btn.dataset.category || "all";
+      renderCards();
+    });
+  });
+}
+
+/* ============================================================
+   COUNTDOWN
+============================================================ */
+function startCountdown() {
+  const el = $("#countdownTimer");
+  if (!el) return;
+
+  function tick() {
+    const now  = new Date();
+    const end  = new Date(now);
+    end.setHours(23, 59, 59, 999);
+
+    let diff = Math.max(0, Math.floor((end - now) / 1000));
+    const h = String(Math.floor(diff / 3600)).padStart(2, "0");
+    const m = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
+    const s = String(diff % 60).padStart(2, "0");
+
+    el.textContent = `${h}:${m}:${s}`;
+  }
+
+  tick();
+  setInterval(tick, 1000);
+}
+
+/* ============================================================
+   PACKAGE SELECTION + QR
+============================================================ */
+function buildUpiUri(amount, appType) {
+  const params = new URLSearchParams({
+    pa: CONFIG.upiId,
+    pn: CONFIG.payeeName,
+    am: String(amount),
+    cu: "INR",
+    tn: "Game Development Advance"
+  });
+  const scheme = UPI_SCHEMES[appType] || UPI_SCHEMES.any;
+  return `${scheme}?${params.toString()}`;
+}
+
+function renderQR(amount) {
+  const box = $("#qrBox");
+  if (!box) return;
+
+  const uri = buildUpiUri(amount, "any");
+  const caption = $("#qrCaption");
+  if (caption) caption.textContent = `Amount: ₹${Number(amount).toLocaleString("en-IN")}`;
+
+  if (window.QRCode) {
+    box.innerHTML = "";
+    new QRCode(box, {
+      text: uri,
+      width: 190,
+      height: 190,
+      colorDark: "#0b1220",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+    return;
+  }
+
+  box.innerHTML = `<canvas id="qrCanvas" width="190" height="190"></canvas>`;
+  const ctx = $("#qrCanvas").getContext("2d");
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, 190, 190);
+  ctx.fillStyle = "#0b1220";
+  ctx.fillRect(18, 18, 40, 40);
+  ctx.fillRect(18, 132, 40, 40);
+  ctx.fillRect(132, 18, 40, 40);
+  ctx.textAlign = "center";
+  ctx.font = "bold 14px Inter, sans-serif";
+  ctx.fillText(`₹${amount}`, 95, 172);
+  ctx.font = "9px monospace";
+  ctx.fillStyle = "#64748b";
+  ctx.fillText(CONFIG.upiId, 95, 186);
+}
+
+window.selectPackage = function (type) {
+  const pkg = CONFIG.packages[type];
+  if (!pkg) return;
+
+  $("#selectedPackage").textContent = pkg.name;
+  $("#totalPrice").textContent      = `₹${pkg.price.toLocaleString("en-IN")}`;
+  $("#advanceAmount").textContent   = `₹${pkg.advance.toLocaleString("en-IN")}`;
+
+  renderQR(pkg.advance);
+
+  $("#paymentSection")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  showToast(`✓ ${pkg.name} selected`);
+};
+
+window.copyUpiId = () => copyToClipboard(CONFIG.upiId);
+
+window.openAllUpiApps = function () {
+  const amount = ($("#advanceAmount")?.textContent || '').replace(/[^0-9]/g, '');
+
+  if (!amount || Number(amount) <= 0) {
+    showToast('⚠ Please select a package first');
+    return;
+  }
+
+  window.location.href = buildUpiUri(amount, 'any');
+
+  setTimeout(() => showToast('💡 UPI ID copied as backup'), 900);
+  setTimeout(() => copyToClipboard(CONFIG.upiId), 1000);
+};
+
+window.payWithUpiApp = function (appType) {
+  const amount = ($("#advanceAmount")?.textContent || '').replace(/[^0-9]/g, '');
+
+  if (!amount || Number(amount) <= 0) {
+    showToast('⚠ Please select a package first');
+    return;
+  }
+
+  const uri = buildUpiUri(amount, appType);
+  const label = APP_LABEL[appType] || 'UPI app';
+
+  showToast(`📱 Opening ${label}...`);
+
+  window.location.href = uri;
+
+  clearTimeout(window._upiFallback);
+  window._upiFallback = setTimeout(() => {
+    copyToClipboard(CONFIG.upiId);
+    showToast(`💡 ${label} didn't open — UPI ID copied`);
+  }, 2500);
+};
+
+/* ============================================================
+   UI BEHAVIOUR
+============================================================ */
+function initNavScroll() {
+  const nav = $("#mainNav");
+  const toTop = $("#backToTop");
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav?.classList.toggle("scrolled", y > 20);
+    toTop?.classList.toggle("show", y > 500);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const toTopAction = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  toTop?.addEventListener("click", toTopAction);
+  toTop?.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toTopAction(); }
+  });
+}
+
+function initActiveNav() {
+  const links = $$(".nav-link-custom");
+  const sections = links
+    .map(l => document.querySelector(l.getAttribute("href")))
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(l => l.classList.toggle(
+        "active", l.getAttribute("href") === `#${entry.target.id}`
+      ));
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+
+  sections.forEach(s => io.observe(s));
+}
+
+function initReveal() {
+  const els = $$(".reveal");
+  if (!els.length) return;
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("in"));
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+}
+
+function initTelegramCopy() {
+  $$(".copyable-telegram").forEach(el => {
+    el.addEventListener("click", () => copyToClipboard(el.dataset.copy || CONFIG.telegram));
+  });
+}
+
+/* ============================================================
+   BOOT
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  setTimeout(() => {
+    renderCards();
+  }, 350);
+
+  initFilters();
+  startCountdown();
+  initNavScroll();
+  initActiveNav();
+  initReveal();
+  initTelegramCopy();
+
+  renderQR(CONFIG.packages.complete.advance);
+});
+</script>
+
+</body>
+</html>
